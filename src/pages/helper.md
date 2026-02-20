@@ -1,7 +1,7 @@
 ---
 title: Helper
 description: Explore markdown content.
-layout: ../layouts/BaseLayout.astro
+layout: ../layouts/Layout.astro
 ---
 
 # H1 — Main Title

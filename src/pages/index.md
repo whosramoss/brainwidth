@@ -1,7 +1,7 @@
 ---
 title: Brainwidth
 description: Expanding Cognitive Bandwidth in the Age of Complexity.
-layout: ../layouts/BaseLayout.astro
+layout: ../layouts/Layout.astro
 ---
 
 # Brainwidth
@@ -176,7 +176,7 @@ In an age of escalating complexity, preserving brainwidth may be essential for d
 
 # References
 
- Baddeley, A. D., & Hitch, G. (1974). _Working memory_. In G. H. Bower (Ed.), The psychology of learning and motivation (Vol. 8). Academic Press.
+Baddeley, A. D., & Hitch, G. (1974). _Working memory_. In G. H. Bower (Ed.), The psychology of learning and motivation (Vol. 8). Academic Press.
 
 Baddeley, A. D. (2000). The episodic buffer: A new component of working memory. _Trends in Cognitive Sciences_, 4(11), 417–423.
 
