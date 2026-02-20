@@ -1,23 +1,35 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+import "../styles/reset.css";
+import Head from "../components/Head.astro";
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <Head title={title} description={description} />
+  </head>
+  <body>
+    <main>
+      <slot />
+      <div class="layout-footer">
+        <p>
+         An integrative conceptual framework for understanding effective cognitive bandwidth in modern environments. While the term itself is not yet formally established in scientific taxonomy, it synthesizes validated research from cognitive psychology, neuroscience, and behavioral economics.
+        </p>
+        <p>
+          The concept is presented as a heuristic model intended to encourage interdisciplinary dialogue rather than replace established constructs such as working memory capacity, cognitive load, or executive control.
+        </p>
+        <p>
+          Future research may formalize measurable indices of brainwidth, particularly in contexts involving digital overload, multitasking, and cognitive sustainability.
+        </p>
+        <p>© ${new Date().getFullYear()} — All rights reserved. </p>
+      </div>
+    </main>
+  </body>
+</html>
