@@ -1,0 +1,111 @@
+---
+const site = {
+  name: "Brainwidth",
+  baseUrl: "https://www.google.com",
+  keywords: `brainwidth,
+    cognitive bandwidth,
+    working memory,
+    cognitive load theory,
+    attention control,
+    executive function,
+    mental bandwidth,
+    digital distraction,
+    deep work,
+    cognitive performance,
+    neuroplasticity,
+    attention economy,
+    productivity research,
+    human cognition,
+    cognitive sustainability`,
+  themeColor: "#000000",
+  colorScheme: "dark light",
+  ogImage: "/images/og-image.png",
+  ogImageWidth: 1200,
+  ogImageHeight: 630,
+  manifest: "/site.webmanifest",
+  faviconSizes: [16, 32, 48, 57, 76, 96, 128, 192, 228] as const,
+  appleTouchIconSizes: [120, 152, 167, 180] as const,
+};
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const { name: author, keywords, baseUrl, ogImage, ogImageWidth, ogImageHeight, themeColor, colorScheme, manifest, faviconSizes, appleTouchIconSizes } = site;
+
+const resolveUrl = (path: string) =>
+  path.startsWith("http") ? path : `${baseUrl.replace(/\/$/, "")}${path.startsWith("/") ? path : `/${path}`}`;
+const ogImageUrl = resolveUrl(ogImage);
+---
+
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{title}</title>
+{author && <meta name="author" content={author} />}
+<meta name="description" content={description} />
+{keywords && <meta name="keywords" content={keywords} />}
+<meta name="color-scheme" content={colorScheme} />
+<meta name="theme-color" content={themeColor} />
+
+<meta name="mobile-web-app-capable" content="yes" />
+{author && <meta name="apple-mobile-web-app-title" content={author} />}
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+{author && <meta name="application-name" content={author} />}
+<meta name="msapplication-tooltip" content={description} />
+<meta name="msapplication-starturl" content={baseUrl || "/"} />
+<meta name="msapplication-navbutton-color" content={themeColor} />
+<meta name="msapplication-TileColor" content={themeColor} />
+<meta name="msapplication-tap-highlight" content="no" />
+
+{ogImageUrl && (
+  <>
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={baseUrl || "/"} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content={String(ogImageWidth)} />
+    <meta property="og:image:height" content={String(ogImageHeight)} />
+  </>
+)}
+
+{ogImageUrl && (
+  <>
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={baseUrl || "/"} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+  </>
+)}
+
+<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+{faviconSizes.map((size) => (
+  <link
+    rel="icon"
+    href={`/images/favicon-${size}.png`}
+    sizes={`${size}x${size}`}
+    type="image/png"
+  />
+))}
+{appleTouchIconSizes.map((size) => (
+  <link
+    rel="apple-touch-icon"
+    href={`/images/favicon-${size}.png`}
+    sizes={`${size}x${size}`}
+  />
+))}
+{manifest && <link rel="manifest" href={manifest} />}
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+  rel="stylesheet"
+/>
